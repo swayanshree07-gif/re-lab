@@ -1,0 +1,2 @@
+# One secret per line; tools/lint.py makes sure README.md never contains these.
+gh1dra_and_ch1ll
