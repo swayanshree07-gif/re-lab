@@ -39,7 +39,8 @@ challenges/NN-name/
 tools/
   run_tests.py  test runner (make test)
   lint.py       structure/spoiler lint (make lint)
-  crackme.py    helpers shared by solvers
+  crackme.py    helpers shared by solvers (run/accepted, strings, tiny ELF64 reader:
+                sections, symbols, bytes at a vaddr)
   new-challenge.sh NN-name   scaffold a new challenge
 ```
 
@@ -48,4 +49,7 @@ tools/
 |---|---|---|---|
 | 01 | 01-plain-strcmp | password in `.rodata`, `strcmp`, decoys | ✅ built + solver passes |
 | 02 | 02-stack-strings | password built byte-by-byte on the stack, custom compare | ✅ built + solver passes |
-| 03–27 | see PLAN.md | | planned |
+| 03 | 03-xor-single | single-byte XOR blob in `.rodata`, decoy string | ✅ built + solver passes |
+| 04 | 04-xor-rolling | 5-byte repeating XOR key + chained add | ✅ built + solver passes |
+| 05 | 05-math-key | 12-digit key, six arithmetic rules via function-pointer table | ✅ built + keygen/fuzz solver passes |
+| 06–27 | see PLAN.md | | planned (05 of 27 done on Day 2: three days ahead of PLAN.md) |
