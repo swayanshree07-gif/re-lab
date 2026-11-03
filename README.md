@@ -7,7 +7,7 @@ anti-debug → self-modifying code → hand-made control-flow flattening → cus
 multi-stage final boss. The day-by-day plan is in [PLAN.md](PLAN.md), the log in
 [PROGRESS.md](PROGRESS.md).
 
-Every crackme reads one line from stdin and prints `Correct!` (exit 0) or `Wrong.`
+Every crackme reads one line (08: two lines, name then serial) from stdin and prints `Correct!` (exit 0) or `Wrong.`
 (exit 1). No networking, no files touched, nothing persistent.
 
 ## Build and test
@@ -54,4 +54,5 @@ tools/
 | 05 | 05-math-key | 12-digit key, six arithmetic rules via function-pointer table | ✅ built + keygen/fuzz solver passes |
 | 06 | 06-serial-format | `XXXX-XXXX-XXXX-XXXX` serial, weighted check chars, keygen | ✅ built + keygen/model solver passes |
 | 07 | 07-stripped | stripped `-O2`, constants in `.data`, modular inverse | ✅ built + solver (parses stripped disassembly) passes |
-| 08–27 | see PLAN.md | | planned (07 of 27 done on Day 3: four days ahead of PLAN.md) |
+| 08 | 08-keygen-name | name → serial (rotl/xor/imul hash), two-line input, keygen | ✅ built + keygen solver passes |
+| 09–27 | see PLAN.md | | planned (08 of 27 done on Day 4: four days ahead of PLAN.md) |
