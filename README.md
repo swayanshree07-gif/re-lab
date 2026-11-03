@@ -52,4 +52,6 @@ tools/
 | 03 | 03-xor-single | single-byte XOR blob in `.rodata`, decoy string | ✅ built + solver passes |
 | 04 | 04-xor-rolling | 5-byte repeating XOR key + chained add | ✅ built + solver passes |
 | 05 | 05-math-key | 12-digit key, six arithmetic rules via function-pointer table | ✅ built + keygen/fuzz solver passes |
-| 06–27 | see PLAN.md | | planned (05 of 27 done on Day 2: three days ahead of PLAN.md) |
+| 06 | 06-serial-format | `XXXX-XXXX-XXXX-XXXX` serial, weighted check chars, keygen | ✅ built + keygen/model solver passes |
+| 07 | 07-stripped | stripped `-O2`, constants in `.data`, modular inverse | ✅ built + solver (parses stripped disassembly) passes |
+| 08–27 | see PLAN.md | | planned (07 of 27 done on Day 3: four days ahead of PLAN.md) |
