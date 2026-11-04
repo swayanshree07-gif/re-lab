@@ -1,0 +1,4 @@
+# One secret per line; tools/lint.py makes sure README.md never contains these.
+zebrafin
+5EEDFACE0BADF00D
+733D1A5BE9412BF5

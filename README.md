@@ -18,7 +18,8 @@ make lint    # required files present, README briefs leak no spoilers
 make check   # test + lint
 make clean
 ```
-Requires `gcc`, `make`, `python3`, `objdump` (binutils).
+Requires `gcc`, `make`, `python3`, `objdump` (binutils). The 10-ptrace test also
+uses `gdb` and `strace` when they are installed (skipped otherwise).
 
 ## Play
 ```
@@ -55,4 +56,6 @@ tools/
 | 06 | 06-serial-format | `XXXX-XXXX-XXXX-XXXX` serial, weighted check chars, keygen | ✅ built + keygen/model solver passes |
 | 07 | 07-stripped | stripped `-O2`, constants in `.data`, modular inverse | ✅ built + solver (parses stripped disassembly) passes |
 | 08 | 08-keygen-name | name → serial (rotl/xor/imul hash), two-line input, keygen | ✅ built + keygen solver passes |
-| 09–27 | see PLAN.md | | planned (08 of 27 done on Day 4: four days ahead of PLAN.md) |
+| 09 | 09-custom-hash | 64-bit invertible hash, meet-in-the-middle preimage | ✅ built + MITM solver passes (< 1 s) |
+| 10 | 10-ptrace | constructor + double `PTRACE_TRACEME`, silent decoy under a debugger | ✅ built + solver/anti-debug tests pass |
+| 11–27 | see PLAN.md | | planned (10 of 27 done on Day 5: five days ahead of PLAN.md) |
