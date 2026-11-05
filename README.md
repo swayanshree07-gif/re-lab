@@ -18,8 +18,8 @@ make lint    # required files present, README briefs leak no spoilers
 make check   # test + lint
 make clean
 ```
-Requires `gcc`, `make`, `python3`, `objdump` (binutils). The 10-ptrace and 11-timing
-tests also use `gdb` (and 10 uses `strace`) when installed (skipped otherwise).
+Requires `gcc`, `make`, `python3`, `objdump` (binutils). The 10-ptrace, 11-timing and
+12-int3-scan tests also use `gdb` (and 10 uses `strace`) when installed (skipped otherwise).
 
 ## Play
 ```
@@ -59,4 +59,5 @@ tools/
 | 09 | 09-custom-hash | 64-bit invertible hash, meet-in-the-middle preimage | ✅ built + MITM solver passes (< 1 s) |
 | 10 | 10-ptrace | constructor + double `PTRACE_TRACEME`, silent decoy under a debugger | ✅ built + solver/anti-debug tests pass |
 | 11 | 11-timing | `rdtsc` + `clock_gettime` timing window, silent decoy when slowed down | ✅ built + solver/gdb timing tests pass |
-| 12–27 | see PLAN.md | | planned (11 of 27 done on Day 6: five days ahead of PLAN.md) |
+| 12 | 12-int3-scan | self-hash of its own `.text` region + `0xCC` count, decoy under software breakpoints; post-link hash patch | ✅ built + solver/gdb breakpoint tests pass |
+| 13–27 | see PLAN.md | | planned (12 of 27 done on Day 7: five days ahead of PLAN.md) |
