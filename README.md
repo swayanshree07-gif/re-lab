@@ -61,4 +61,5 @@ tools/
 | 11 | 11-timing | `rdtsc` + `clock_gettime` timing window, silent decoy when slowed down | ✅ built + solver/gdb timing tests pass |
 | 12 | 12-int3-scan | self-hash of its own `.text` region + `0xCC` count, decoy under software breakpoints; post-link hash patch | ✅ built + solver/gdb breakpoint tests pass |
 | 13 | 13-env-checks | TracerPid + LD_PRELOAD/LD_AUDIT + parent `comm` checks via raw syscalls, decoy path | ✅ built + solver/anti-debug tests pass |
-| 14–27 | see PLAN.md | | planned (13 of 27 done on Day 8: five days ahead of PLAN.md) |
+| 14 | 14-smc-xor | `verify()` XOR-encrypted in `.text`, self-decrypted at runtime via `mprotect`; 1-byte inner key | ✅ built + solver passes |
+| 15–27 | see PLAN.md | | planned (14 of 27 done on Day 9: five days ahead of PLAN.md) |
