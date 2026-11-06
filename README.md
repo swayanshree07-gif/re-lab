@@ -60,4 +60,5 @@ tools/
 | 10 | 10-ptrace | constructor + double `PTRACE_TRACEME`, silent decoy under a debugger | ✅ built + solver/anti-debug tests pass |
 | 11 | 11-timing | `rdtsc` + `clock_gettime` timing window, silent decoy when slowed down | ✅ built + solver/gdb timing tests pass |
 | 12 | 12-int3-scan | self-hash of its own `.text` region + `0xCC` count, decoy under software breakpoints; post-link hash patch | ✅ built + solver/gdb breakpoint tests pass |
-| 13–27 | see PLAN.md | | planned (12 of 27 done on Day 7: five days ahead of PLAN.md) |
+| 13 | 13-env-checks | TracerPid + LD_PRELOAD/LD_AUDIT + parent `comm` checks via raw syscalls, decoy path | ✅ built + solver/anti-debug tests pass |
+| 14–27 | see PLAN.md | | planned (13 of 27 done on Day 8: five days ahead of PLAN.md) |
