@@ -1,0 +1,5 @@
+# One secret per line; tools/lint.py makes sure README.md never contains these.
+fl4tt3ned_fl0w
+unfl4tten_me!!
+0x5c8cc1ab
+5c8cc1ab

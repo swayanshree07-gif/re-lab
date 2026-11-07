@@ -19,7 +19,7 @@ make check   # test + lint
 make clean
 ```
 Requires `gcc`, `make`, `python3`, `objdump` (binutils). The 10-ptrace, 11-timing and
-12-int3-scan tests also use `gdb` (and 10 uses `strace`) when installed (skipped otherwise).
+12-int3-scan and 16-cff-manual tests also use `gdb` (and 10 uses `strace`) when installed (skipped otherwise).
 
 ## Play
 ```
@@ -42,7 +42,10 @@ tools/
   lint.py       structure/spoiler lint (make lint)
   crackme.py    helpers shared by solvers (run/accepted, strings, tiny ELF64 reader:
                 sections, symbols, bytes at a vaddr)
+  gdbtrace.py   gdb value tracer: print an expression on every breakpoint hit
+                (dispatcher state traces for flattened code; --hw option)
   new-challenge.sh NN-name   scaffold a new challenge
+  README.md     what each tool does, with examples
 ```
 
 ## Status
@@ -63,4 +66,5 @@ tools/
 | 13 | 13-env-checks | TracerPid + LD_PRELOAD/LD_AUDIT + parent `comm` checks via raw syscalls, decoy path | ✅ built + solver/anti-debug tests pass |
 | 14 | 14-smc-xor | `verify()` XOR-encrypted in `.text`, self-decrypted at runtime via `mprotect`; 1-byte inner key | ✅ built + solver passes |
 | 15 | 15-smc-layers | layered SMC: layer 1 static key, layer 2 key derived from the password prefix (FNV-1a gate) | ✅ built + solver passes |
-| 16–27 | see PLAN.md | | planned (15 of 27 done on Day 10: five days ahead of PLAN.md) |
+| 16 | 16-cff-manual | hand-made control-flow flattening: random state ids, XOR-delta transitions, branchless edges, dead junk states | ✅ built + solver (static CFG recovery + gdb dispatcher trace) passes |
+| 17–27 | see PLAN.md | | planned (16 of 27 done on Day 11: five days ahead of PLAN.md) |
