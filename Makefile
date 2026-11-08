@@ -3,7 +3,7 @@
 DIST := $(abspath dist)
 CHALLENGES := $(sort $(wildcard challenges/[0-9][0-9]-*))
 
-.PHONY: all test lint check clean list
+.PHONY: all test lint check clean list ghidra-test
 
 all:
 	@mkdir -p $(DIST)
@@ -24,3 +24,6 @@ list:
 
 clean:
 	rm -rf $(DIST)
+
+ghidra-test: all
+	sh tools/ghidra_test.sh

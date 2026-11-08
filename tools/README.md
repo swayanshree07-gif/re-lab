@@ -6,6 +6,7 @@
 | `lint.py` | `make lint`: every challenge has `src/ Makefile README.md solve.py src/SPOILERS`, the README has the Goal / Difficulty / Allowed tools sections and leaks no line of `SPOILERS`; warns if the desk writeup is missing. |
 | `crackme.py` | Shared helpers for solvers: `run()` / `accepted()` (stdin in, verdict out), `printable_strings()` (like `strings`), and a dependency-free ELF64 reader `Elf` (`section_bytes`, `symbols`, `symbol_bytes`, `read_vaddr`). |
 | `gdbtrace.py` | Value tracer (Day 11): runs a binary under `gdb -batch` with given stdin and prints an expression every time a location is hit. Made for flattened code (break on the dispatcher, print the state variable), works for any "what does X look like each time we get here" question. `--hw` uses a hardware breakpoint (needed for 12-int3-scan / SMC targets). |
+| `ghidra_dump.sh <bin> [out]` + `ghidra/DumpAll.java` | Ghidra-headless dump (functions, strings, decompiled C) to `dist/ghidra/<name>.txt`. Needs a JDK ≥ 25 for Ghidra 12.2 (set `JAVA_HOME`). `make ghidra-test` (`ghidra_test.sh`) checks the dump of 01, or prints SKIP. |
 | `new-challenge.sh NN-name` | Scaffolds `challenges/NN-name/` with Makefile, stub `main.c`, SPOILERS, README brief and solver stub. |
 
 ## gdbtrace examples
