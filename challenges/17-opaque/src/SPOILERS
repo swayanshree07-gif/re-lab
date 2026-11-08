@@ -1,0 +1,6 @@
+# One secret per line; tools/lint.py makes sure README.md never contains these.
+6913-3377-DD03-4528
+0x9e3779b1
+9e3779b1
+make_serial
+validate_license

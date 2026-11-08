@@ -19,7 +19,7 @@ make check   # test + lint
 make clean
 ```
 Requires `gcc`, `make`, `python3`, `objdump` (binutils). The 10-ptrace, 11-timing and
-12-int3-scan and 16-cff-manual tests also use `gdb` (and 10 uses `strace`) when installed (skipped otherwise).
+12-int3-scan, 16-cff-manual and 17-opaque tests also use `gdb` (and 10 uses `strace`) when installed (skipped otherwise).
 
 ## Play
 ```
@@ -67,4 +67,5 @@ tools/
 | 14 | 14-smc-xor | `verify()` XOR-encrypted in `.text`, self-decrypted at runtime via `mprotect`; 1-byte inner key | ✅ built + solver passes |
 | 15 | 15-smc-layers | layered SMC: layer 1 static key, layer 2 key derived from the password prefix (FNV-1a gate) | ✅ built + solver passes |
 | 16 | 16-cff-manual | hand-made control-flow flattening: random state ids, XOR-delta transitions, branchless edges, dead junk states | ✅ built + solver (static CFG recovery + gdb dispatcher trace) passes |
-| 17–27 | see PLAN.md | | planned (16 of 27 done on Day 11: five days ahead of PLAN.md) |
+| 17 | 17-opaque | name/serial keygen behind opaque predicates, junk calls, decoy license checks | ✅ built + keygen solver (gdb confirms decoys never run) passes |
+| 18–27 | see PLAN.md | | planned (17 of 27 done on Day 12: five days ahead of PLAN.md) |
