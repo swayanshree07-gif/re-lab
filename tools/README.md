@@ -7,6 +7,8 @@
 | `crackme.py` | Shared helpers for solvers: `run()` / `accepted()` (stdin in, verdict out), `printable_strings()` (like `strings`), and a dependency-free ELF64 reader `Elf` (`section_bytes`, `symbols`, `symbol_bytes`, `read_vaddr`). |
 | `gdbtrace.py` | Value tracer (Day 11): runs a binary under `gdb -batch` with given stdin and prints an expression every time a location is hit. Made for flattened code (break on the dispatcher, print the state variable), works for any "what does X look like each time we get here" question. `--hw` uses a hardware breakpoint (needed for 12-int3-scan / SMC targets). |
 | `ghidra_dump.sh <bin> [out]` + `ghidra/DumpAll.java` | Ghidra-headless dump (functions, strings, decompiled C) to `dist/ghidra/<name>.txt`. Needs a JDK ≥ 25 for Ghidra 12.2 (set `JAVA_HOME`). `make ghidra-test` (`ghidra_test.sh`) checks the dump of 01, or prints SKIP. |
+| `rvemu.py [-t] [-n N] <elf>` | RV64IM user-mode emulator (static ELF, read/write/exit, no C extension). Stand-in for qemu-riscv64. `-t` prints the instruction count; API `rvemu.run(path, stdin) -> (rc, out, icount)`. `crackme.run` uses it automatically for RISC-V ELFs. |
+| `rvemu_test.sh` + `rvtest/ops.c` | `make rvemu-test`: builds ops.c natively and for RV64IM and checks both print the same hash of ~6000 arithmetic results. |
 | `new-challenge.sh NN-name` | Scaffolds `challenges/NN-name/` with Makefile, stub `main.c`, SPOILERS, README brief and solver stub. |
 
 ## gdbtrace examples

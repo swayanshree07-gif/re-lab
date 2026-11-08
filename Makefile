@@ -3,7 +3,7 @@
 DIST := $(abspath dist)
 CHALLENGES := $(sort $(wildcard challenges/[0-9][0-9]-*))
 
-.PHONY: all test lint check clean list ghidra-test
+.PHONY: all test lint check clean list ghidra-test rvemu-test
 
 all:
 	@mkdir -p $(DIST)
@@ -17,7 +17,10 @@ test: all
 lint:
 	python3 tools/lint.py
 
-check: test lint
+check: rvemu-test test lint
+
+rvemu-test:
+	sh tools/rvemu_test.sh
 
 list:
 	@for c in $(CHALLENGES); do echo $$(basename $$c); done

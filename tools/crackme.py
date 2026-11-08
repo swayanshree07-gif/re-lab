@@ -3,14 +3,29 @@
 Convention: a crackme reads one line from stdin, prints "Correct!" and exits 0
 on success, prints "Wrong." and exits 1 on failure.
 """
-import subprocess
+import os, subprocess
 
 SUCCESS_MARK = "Correct!"
 
 
+def launcher(binary):
+    """argv to run binary: native, or RISC-V via qemu-riscv64 if installed,
+    else via tools/rvemu.py (our own RV64IM emulator)."""
+    with open(binary, "rb") as f:
+        hdr = f.read(20)
+    if hdr[:4] == b"\x7fELF" and int.from_bytes(hdr[18:20], "little") == 0xF3:
+        import shutil, sys
+        q = shutil.which("qemu-riscv64")
+        if q and not os.environ.get("RE_LAB_FORCE_RVEMU"):
+            return [q, binary]
+        return [sys.executable, os.path.join(os.path.dirname(os.path.abspath(__file__)),
+                                             "rvemu.py"), binary]
+    return [binary]
+
+
 def run(binary, stdin_text, timeout=10, env=None):
     """Run the binary with stdin_text (a newline is appended). Returns (rc, stdout)."""
-    p = subprocess.run([binary], input=(stdin_text + "\n").encode(),
+    p = subprocess.run(launcher(binary), input=(stdin_text + "\n").encode(),
                        stdout=subprocess.PIPE, stderr=subprocess.STDOUT,
                        timeout=timeout, env=env)
     return p.returncode, p.stdout.decode(errors="replace")
