@@ -20,7 +20,25 @@ def launcher(binary):
             return [q, binary]
         return [sys.executable, os.path.join(os.path.dirname(os.path.abspath(__file__)),
                                              "rvemu.py"), binary]
+    if hdr[:4] == b"\x7fELF" and int.from_bytes(hdr[18:20], "little") == 0xB7:
+        import shutil
+        q = shutil.which("qemu-aarch64")
+        if q:
+            return [q, binary]
+        raise NotRunnable("AArch64 binary and qemu-aarch64 is not installed")
     return [binary]
+
+
+class NotRunnable(RuntimeError):
+    """The binary's architecture can't be run here (no emulator installed)."""
+
+
+def runnable(binary):
+    try:
+        launcher(binary)
+        return True
+    except NotRunnable:
+        return False
 
 
 def run(binary, stdin_text, timeout=10, env=None):

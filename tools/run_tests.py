@@ -24,7 +24,10 @@ def main(argv):
         if not os.path.exists(binary):
             problems.append("binary missing (run make all)")
         else:
-            for w in WRONG_INPUTS:
+            skip_run = not crackme.runnable(binary)
+            if skip_run:
+                print(f"       (no emulator for {name}: run checks skipped, static solver only)")
+            for w in ([] if skip_run else WRONG_INPUTS):
                 rc, out = crackme.run(binary, w)
                 if rc != 1 or crackme.SUCCESS_MARK in out:
                     problems.append(f"wrong input {w[:20]!r} not rejected (rc={rc})")
