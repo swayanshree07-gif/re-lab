@@ -68,4 +68,5 @@ tools/
 | 15 | 15-smc-layers | layered SMC: layer 1 static key, layer 2 key derived from the password prefix (FNV-1a gate) | ✅ built + solver passes |
 | 16 | 16-cff-manual | hand-made control-flow flattening: random state ids, XOR-delta transitions, branchless edges, dead junk states | ✅ built + solver (static CFG recovery + gdb dispatcher trace) passes |
 | 17 | 17-opaque | name/serial keygen behind opaque predicates, junk calls, decoy license checks | ✅ built + keygen solver (gdb confirms decoys never run) passes |
-| 18–27 | see PLAN.md | | planned (17 of 27 done on Day 12: five days ahead of PLAN.md) |
+| 18 | 18-vm-intro | tiny stack VM runs bytecode that checks the password | ✅ built + solver with bytecode disassembler passes |
+| 19–27 | see PLAN.md | | planned (18 of 27 done on Day 13: five days ahead of PLAN.md) |
