@@ -72,6 +72,7 @@ tools/
 | 19 | 19-vm-check | 8-register VM with loops checks the password | ✅ built + solver (disassembler + emulator) passes |
 | 20 | 20-vm-obf | register VM with shuffled opcodes + encrypted bytecode | ✅ built + solver (opcode-map recovery, decrypt, reuse 19 emulator) passes |
 | 21 | 21-packed | hand-written packer (LZ77 + LCG-XOR), code unpacked into an mmap page | ✅ built + static-unpacker solver passes |
-| 22–28 | see PLAN.md | anti-debug mix, RISC-V, AArch64, z3 constraints, signals, C++, boss | planned (PLAN.md Days 17–27 rewritten on Day 16 for the extended goals) |
+| 22 | 22-antidebug-mix | ptrace + TracerPid + timing + code checksum, each mixed into the key derivation | ✅ built + static solver + gdb/LD_PRELOAD/breakpoint behaviour tests pass |
+| 23–28 | see PLAN.md | RISC-V, AArch64, z3 constraints, signals, C++, boss | planned (PLAN.md Days 17–27 rewritten on Day 16 for the extended goals) |
 
 **Ghidra headless:** `tools/ghidra_dump.sh <binary>` dumps functions, strings and decompiled C; `make ghidra-test` checks it. Currently it skips: Ghidra 12.2 needs JDK 25, and only JDK 21 is installed.
