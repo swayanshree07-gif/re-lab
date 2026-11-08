@@ -70,4 +70,5 @@ tools/
 | 17 | 17-opaque | name/serial keygen behind opaque predicates, junk calls, decoy license checks | ✅ built + keygen solver (gdb confirms decoys never run) passes |
 | 18 | 18-vm-intro | tiny stack VM runs bytecode that checks the password | ✅ built + solver with bytecode disassembler passes |
 | 19 | 19-vm-check | 8-register VM with loops checks the password | ✅ built + solver (disassembler + emulator) passes |
-| 20–27 | see PLAN.md | | planned (19 of 27 done on Day 14: five days ahead of PLAN.md) |
+| 20 | 20-vm-obf | register VM with shuffled opcodes + encrypted bytecode | ✅ built + solver (opcode-map recovery, decrypt, reuse 19 emulator) passes |
+| 21–27 | see PLAN.md | | planned (20 of 27 done on Day 15: five days ahead of PLAN.md) |
