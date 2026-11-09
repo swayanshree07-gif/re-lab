@@ -78,6 +78,7 @@ tools/
 | 24 | 24-aarch64 | freestanding AArch64 name/serial keygen | ✅ built + static keygen solver passes (run test on a native twin until qemu-aarch64 is installed) |
 | 25 | 25-constraints | table of byte constraints | ✅ built + solver passes (fallback search; z3 path used when z3 is installed) |
 | 26 | 26-signals | check runs inside SIGSEGV/SIGFPE/SIGILL handlers | ✅ built + solver passes (also checks the signal sequence with strace) |
+| 27 | 27-cpp-vtables | g++ class hierarchy; factory + virtual `transform` per 4-byte chunk | ✅ built + solver passes (also checks vtables/RTTI with `nm -C`) |
 | 27–28 | see PLAN.md | C++, boss | planned (PLAN.md Days 17–27 rewritten on Day 16 for the extended goals) |
 
 **AArch64:** run through `qemu-aarch64` if installed; otherwise `tools/run_tests.py` skips the run checks for it and the solver tests its keygen on a native x86_64 twin built from the same source.
