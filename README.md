@@ -75,7 +75,8 @@ tools/
 | 22 | 22-antidebug-mix | ptrace + TracerPid + timing + code checksum, each mixed into the key derivation | ✅ built + static solver + gdb/LD_PRELOAD/breakpoint behaviour tests pass |
 | 23 | 23-riscv | freestanding RV64IM binary (clang + ld.lld), runs under qemu-riscv64 or our `tools/rvemu.py` | ✅ built + instruction-count side-channel solver passes |
 | 24 | 24-aarch64 | freestanding AArch64 name/serial keygen | ✅ built + static keygen solver passes (run test on a native twin until qemu-aarch64 is installed) |
-| 25–28 | see PLAN.md | z3 constraints, signals, C++, boss | planned (PLAN.md Days 17–27 rewritten on Day 16 for the extended goals) |
+| 25 | 25-constraints | table of byte constraints | ✅ built + solver passes (fallback search; z3 path used when z3 is installed) |
+| 26–28 | see PLAN.md | signals, C++, boss | planned (PLAN.md Days 17–27 rewritten on Day 16 for the extended goals) |
 
 **AArch64:** run through `qemu-aarch64` if installed; otherwise `tools/run_tests.py` skips the run checks for it and the solver tests its keygen on a native x86_64 twin built from the same source.
 
