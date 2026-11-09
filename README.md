@@ -79,7 +79,7 @@ tools/
 | 25 | 25-constraints | table of byte constraints | ✅ built + solver passes (fallback search; z3 path used when z3 is installed) |
 | 26 | 26-signals | check runs inside SIGSEGV/SIGFPE/SIGILL handlers | ✅ built + solver passes (also checks the signal sequence with strace) |
 | 27 | 27-cpp-vtables | g++ class hierarchy; factory + virtual `transform` per 4-byte chunk | ✅ built + solver passes (also checks vtables/RTTI with `nm -C`) |
-| 27–28 | see PLAN.md | C++, boss | planned (PLAN.md Days 17–27 rewritten on Day 16 for the extended goals) |
+| 28 | 28-boss | final boss: stage 1 = stripped + anti-debug salts + key-encrypted packed stage 2 | 🟡 stage 1 built + solver passes; stages 2 (VM) and 3 (z3 keygen) planned for Days 26–27 |
 
 **AArch64:** run through `qemu-aarch64` if installed; otherwise `tools/run_tests.py` skips the run checks for it and the solver tests its keygen on a native x86_64 twin built from the same source.
 
