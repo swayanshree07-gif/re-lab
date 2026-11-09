@@ -15,7 +15,8 @@ Every crackme reads one line (08: two lines, name then serial) from stdin and pr
 make all     # build every challenge into dist/ (git-ignored)
 make test    # builds, then runs each solve.py + a wrong-input check
 make lint    # required files present, README briefs leak no spoilers
-make check   # test + lint
+make check   # rvemu self-test + test + test-z3 + lint
+make test-z3 # z3 solvers (solve_z3.py) for 05 and 08; symbolic part skipped if z3 missing
 make clean
 ```
 Requires `gcc`, `make`, `python3`, `objdump` (binutils). The 10-ptrace, 11-timing and
@@ -83,3 +84,5 @@ tools/
 **RISC-V:** non-native binaries are run through `qemu-riscv64` if installed, else `tools/rvemu.py` (own RV64IM emulator; `make rvemu-test` compares it with a native build, and `make check` runs it).
 
 **Ghidra headless:** `tools/ghidra_dump.sh <binary>` dumps functions, strings and decompiled C; `make ghidra-test` checks it. Currently it skips: Ghidra 12.2 needs JDK 25, and only JDK 21 is installed.
+
+**z3:** `challenges/05-math-key/solve_z3.py` and `challenges/08-keygen-name/solve_z3.py` (run by `make test-z3`) write the check once so it works on both z3 BitVecs and plain ints. The concrete model check always runs. The z3 search runs only when `z3` can be imported (`pip install z3-solver`); otherwise it's skipped with a notice.
