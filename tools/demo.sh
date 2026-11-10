@@ -12,7 +12,9 @@ for d in challenges/[0-9][0-9]-*/; do
   t0=$(date +%s.%N)
   if timeout 120 python3 "$d/solve.py" "dist/$name" >/dev/null 2>&1; then r=solved; pass=$((pass+1)); else r=FAILED; fi
   t=$(echo "$(date +%s.%N) - $t0" | bc)
-  printf '%-4s %-20s %-12s %-8s %.1fs\n' "${name:0:2}" "$name" "$diff" "$r" "$t"
+  # printf pads by bytes; stars are multibyte, so pad by character count instead.
+  pad=$(python3 -c 'import sys; print(sys.argv[1].ljust(12))' "$diff")
+  printf '%-4s %-20s %s %-8s %.1fs\n' "${name:0:2}" "$name" "$pad" "$r" "$t"
 done
 echo "$pass/$total solved"
 [ "$pass" -eq "$total" ]
