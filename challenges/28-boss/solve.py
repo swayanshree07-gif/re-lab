@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Solver for 28-boss stages 1+2 (spoiler!). Usage: solve.py <binary>
+"""Solver for 28-boss stages 1-3 (spoiler!). Usage: solve.py <binary>
 
 The binary is stripped, so the tables are found by shape, not by symbol:
   1. .rodata: an S1_LEN-byte window that is a permutation of 0..n-1 is s1_perm;
@@ -15,16 +15,26 @@ executable (the unpacked VM). The bytecode is found by trying every offset
 and every first key byte with the rolling-XOR decryption until it decodes as
 valid bytecode ending in HALT (ISA from src/isa.py, which is what you
 reverse from the VM's switch). The emulator records each CHK, so the key is
-brute-forced one byte at a time."""
+brute-forced one byte at a time.
+Stage 3 (keygen): the model is in src/stage3.py (four Feistel rounds mapping
+the serial to fnv(key1), fnv(key2)^0x5732). Its round keys and multiplier
+must appear as immediates/data in the binary, which proves the model matches
+it. With z3: solve the forward model symbolically (and prove uniqueness);
+without z3: invert the Feistel network directly (fallback)."""
 import os, re, shutil, subprocess, sys
 sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "..", "tools"))
 import crackme  # noqa: E402
 sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "src"))
 import isa  # noqa: E402
+import stage3  # noqa: E402
 
 
 def clears1(binary, text):
     return "Stage 1 clear." in crackme.run(binary, text)[1]
+
+
+def clears2(binary, text):
+    return "Stage 2 clear." in crackme.run(binary, text)[1]
 
 M = 0xFFFFFFFF
 
@@ -150,18 +160,70 @@ def stage2(binary, key1):
             return [f"stage 2: no byte fits position {i}"]
     k2 = key.decode()
     full = f"{key1}|{k2}"
-    print(f"stage 2 key {k2!r} -> full input {full!r}")
-    if not crackme.accepted(binary, full):
-        problems.append("full stage1|stage2 input rejected")
+    print(f"stage 2 key {k2!r}")
+    if not clears2(binary, full):
+        problems.append("stage1|stage2 input does not clear stage 2")
     for bad in (f"{key1}|{k2[:-1]}", f"{key1}|{k2}x", f"{key1}|{k2[:-1]}{chr(ord(k2[-1]) ^ 1)}", key1, f"{key1}|"):
-        if crackme.accepted(binary, bad):
+        if clears2(binary, bad):
             problems.append(f"stage 2 near miss accepted: {bad!r}")
-    if not crackme.accepted(binary, full + "|stage3-later"):
+    if not clears2(binary, full + "|stage3-later"):
         problems.append("text after a second '|' must be ignored by stage 2")
+    if crackme.accepted(binary, full):
+        problems.append("stage 1+2 alone accepted (stage 3 not enforced)")
     if k2 in crackme.printable_strings(open(binary, "rb").read()) or k2.encode() in page:
         problems.append("stage 2 key visible in binary or unpacked page")
-    return problems
+    return problems + stage3_check(binary, key1, k2)
 
+
+def solve3_z3(h1, h2):
+    import z3
+    a, b = z3.BitVecs("a b", 32)
+    fa, fb = stage3.forward(a, b, rotl=z3.RotateLeft, mask=0xFFFFFFFF)
+    s = z3.Solver()
+    s.add(fa == h1, fb == h2)
+    if s.check() != z3.sat:
+        raise SystemExit("z3: unsat")
+    m = s.model()
+    va, vb = m[a].as_long(), m[b].as_long()
+    s.add(z3.Or(a != va, b != vb))
+    if s.check() != z3.unsat:
+        raise SystemExit("z3: serial not unique")
+    return va, vb
+
+
+def stage3_check(binary, key1, key2):
+    problems = []
+    data = open(binary, "rb").read()
+    for k in stage3.RK + [stage3.MUL]:
+        if k.to_bytes(4, "little") not in data:
+            problems.append(f"stage 3 model constant {k:#010x} not in binary (model out of date)")
+    h1, h2 = stage3.target(key1, key2)
+    a, b = stage3.inverse(h1, h2)
+    if stage3.forward(a, b) != (h1, h2):
+        problems.append("stage 3 inverse disagrees with forward model")
+    use_z3 = "--no-z3" not in sys.argv
+    if use_z3:
+        try:
+            import z3  # noqa: F401
+        except ImportError:
+            print("NOTICE: z3 not installed, stage 3 uses the Feistel inversion fallback")
+            use_z3 = False
+    if use_z3:
+        za, zb = solve3_z3(h1, h2)
+        print("stage 3: z3 found a unique serial")
+        if (za, zb) != (a, b):
+            problems.append("z3 and fallback disagree")
+    ser = f"{a:08X}-{b:08X}"
+    full = f"{key1}|{key2}|{ser}"
+    print(f"stage 3 serial {ser!r} -> full input {full!r}")
+    if not crackme.accepted(binary, full):
+        problems.append("full chain rejected")
+    flip = ser[:-1] + ("0" if ser[-1] != "0" else "1")
+    for bad in (f"{key1}|{key2}|{flip}", f"{key1}|{key2}|{ser.lower()}" if ser.lower() != ser else full + "x",
+                f"{key1}|{key2}|{ser[:8]}{ser[9:]}", f"{key1}|{key2}|{ser}x", f"{key1}|{key2}x|{ser}"):
+        if crackme.accepted(binary, bad):
+            problems.append(f"stage 3 near miss accepted: {bad!r}")
+    return problems
 
 if __name__ == "__main__":
     sys.exit(main(sys.argv[1]))

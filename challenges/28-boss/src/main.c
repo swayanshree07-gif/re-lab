@@ -14,6 +14,7 @@
 #include <sys/ptrace.h>
 #include "stage1.h"
 #include "stage2_packed.h"
+#include "stage3.h"
 
 static unsigned int salts[3];
 
@@ -69,6 +70,34 @@ static unsigned int fnv(const unsigned char *p, size_t n) {
     return h;
 }
 
+/* Stage 3: keygen. Serial "XXXXXXXX-XXXXXXXX" (upper hex) = (a, b); four
+ * Feistel rounds must map it to (fnv(stage1 key), fnv(stage2 key) ^ 0x5732). */
+static unsigned int s3_f(unsigned int r, unsigned int k) {
+    unsigned int x = (r ^ k) * S3_MUL;
+    return ((x << 9) | (x >> 23)) + k;
+}
+
+static int hexword(const char *p, unsigned int *out) {
+    unsigned int v = 0;
+    for (int i = 0; i < 8; i++) {
+        char c = p[i];
+        if (c >= '0' && c <= '9') v = v << 4 | (unsigned)(c - '0');
+        else if (c >= 'A' && c <= 'F') v = v << 4 | (unsigned)(c - 'A' + 10);
+        else return 0;
+    }
+    *out = v;
+    return 1;
+}
+
+static int stage3(const char *key1, const char *key2, size_t n2, const char *serial) {
+    unsigned int a, b, t;
+    if (strlen(serial) != 17 || serial[8] != '-' || !hexword(serial, &a) || !hexword(serial + 9, &b)) return 0;
+    for (int i = 0; i < 4; i++) { t = b; b = a ^ s3_f(b, s3_rk[i]); a = t; }
+    unsigned int h1 = fnv((const unsigned char *)key1, strlen(key1));
+    unsigned int h2 = fnv((const unsigned char *)key2, n2) ^ 0x5732u;
+    return ((a ^ h1) | (b ^ h2)) == 0;
+}
+
 typedef int (*stage_fn)(const unsigned char *, unsigned long);
 
 static unsigned char *unpack(const char *key) {
@@ -113,6 +142,10 @@ int main(void) {
     int r = ((stage_fn)code)((const unsigned char *)rest, strlen(rest));
     munmap(code, 4096);
     if (r != 0x5732) { puts("Wrong."); return 1; }
+    puts("Stage 2 clear.");
+    char *serial = strchr(rest, '|');
+    size_t n2 = serial ? (size_t)(serial - rest) : strlen(rest);
+    if (!serial || !stage3(buf, rest, n2, serial + 1)) { puts("Wrong."); return 1; }
     puts("Correct!");
     return 0;
 }

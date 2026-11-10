@@ -4,7 +4,7 @@ CFLAGS ?= -O1 -g0 -Wall -Wextra
 PCFLAGS := -Os -fPIC -ffreestanding -fno-stack-protector -fno-asynchronous-unwind-tables -fcf-protection=none -fno-builtin
 B := $(DIST)/.build-$(NAME)
 
-$(DIST)/$(NAME): src/main.c src/stage1.h src/stage2.c src/vm_code.h src/stage2.ld src/pack.py src/SPOILERS
+$(DIST)/$(NAME): src/main.c src/stage1.h src/stage2.c src/vm_code.h src/stage3.h src/stage2.ld src/pack.py src/SPOILERS
 	@mkdir -p $(B)
 	$(CC) $(PCFLAGS) -c src/stage2.c -o $(B)/stage2.o
 	ld -T src/stage2.ld --oformat binary -o $(B)/stage2.bin $(B)/stage2.o
