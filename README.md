@@ -1,6 +1,6 @@
 # re-lab — a self-made reverse engineering course
 
-About 27 original, harmless Linux crackmes that get steadily harder, built to
+28 original, harmless Linux crackmes that get steadily harder, built to
 practise with Ghidra, gdb (+GEF), objdump, strace and ltrace. Path: plain string
 compare → stack strings → XOR → math keys → stripped binaries → keygens →
 anti-debug → self-modifying code → hand-made control-flow flattening → custom VM →
@@ -18,6 +18,7 @@ make lint    # required files present, README briefs leak no spoilers
 make check   # rvemu self-test + test + test-z3 + lint
 make test-z3 # z3 solvers (solve_z3.py) for 05 and 08; symbolic part skipped if z3 missing
 make clean
+make demo    # clean build + solve all, summary table, exits 0 iff 28/28 (tools/demo.sh)
 ```
 Requires `gcc`, `make`, `python3`, `objdump` (binutils). The 10-ptrace, 11-timing and
 12-int3-scan, 16-cff-manual and 17-opaque tests also use `gdb` (and 10 uses `strace`) when installed (skipped otherwise).
@@ -41,7 +42,8 @@ challenges/NN-name/
   solve.py      automated solver = the test
 tools/
   run_tests.py  test runner (make test)
-  lint.py       structure/spoiler lint (make lint)
+  lint.py       structure/spoiler lint (make lint); also requires a spoiler-marked desk writeup per challenge
+  demo.sh       final demo (make demo)
   crackme.py    helpers shared by solvers (run/accepted, strings, tiny ELF64 reader:
                 sections, symbols, bytes at a vaddr)
   gdbtrace.py   gdb value tracer: print an expression on every breakpoint hit

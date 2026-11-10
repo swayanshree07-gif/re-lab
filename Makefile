@@ -38,3 +38,6 @@ clean:
 
 ghidra-test: all
 	sh tools/ghidra_test.sh
+
+demo:
+	tools/demo.sh

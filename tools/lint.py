@@ -6,7 +6,8 @@ Checks per challenges/NN-name/:
   - README.md does not contain any line of src/SPOILERS (case-insensitive)
   - HINTS.md has Levels 1-3 and no SPOILERS line
   - README.md has the Goal / Difficulty / Allowed tools sections
-  - optional: the desk writeup notes/NN-name.md exists (warning only)
+  - the desk writeup notes/NN-name.md exists and is spoiler-marked in its first
+    5 lines (error; skipped with a warning when the desk folder is absent)
 """
 import os, sys
 
@@ -47,8 +48,13 @@ def main():
                     secret = line.strip()
                     if secret and not secret.startswith("#") and len(secret) > 3 and secret.lower() in hints.lower():
                         errors.append(f"{name}: HINTS.md leaks a spoiler")
-        if os.path.isdir(DESK) and not os.path.exists(os.path.join(DESK, "notes", name + ".md")):
-            warnings.append(f"{name}: no writeup at {DESK}/notes/{name}.md")
+        wpath = os.path.join(DESK, "notes", name + ".md")
+        if not os.path.isdir(DESK):
+            warnings.append(f"{name}: desk folder absent, writeup not checked")
+        elif not os.path.exists(wpath):
+            errors.append(f"{name}: no writeup at {wpath}")
+        elif "spoiler" not in "".join(open(wpath).readlines()[:5]).lower():
+            errors.append(f"{name}: writeup not spoiler-marked at the top")
     for w in warnings:
         print("WARN ", w)
     for e in errors:
