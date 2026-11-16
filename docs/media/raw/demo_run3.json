@@ -1,0 +1,131 @@
+{
+"cmd": [
+"timeout",
+"300",
+"bash",
+"tools/demo.sh"
+],
+"rc": 0,
+"lines": [
+[
+1.401,
+"#    Challenge            Difficulty   Result   Time"
+],
+[
+1.474,
+"01   01-plain-strcmp      \u2605\u2606\u2606\u2606\u2606        solved   0.0s"
+],
+[
+1.532,
+"02   02-stack-strings     \u2605\u2606\u2606\u2606\u2606        solved   0.0s"
+],
+[
+1.594,
+"03   03-xor-single        \u2605\u2605\u2606\u2606\u2606        solved   0.0s"
+],
+[
+1.654,
+"04   04-xor-rolling       \u2605\u2605\u2606\u2606\u2606        solved   0.0s"
+],
+[
+2.557,
+"05   05-math-key          \u2605\u2605\u2606\u2606\u2606        solved   0.9s"
+],
+[
+3.459,
+"06   06-serial-format     \u2605\u2605\u2606\u2606\u2606        solved   0.9s"
+],
+[
+3.532,
+"07   07-stripped          \u2605\u2605\u2605\u2606\u2606        solved   0.0s"
+],
+[
+3.622,
+"08   08-keygen-name       \u2605\u2605\u2606\u2606\u2606        solved   0.1s"
+],
+[
+3.981,
+"09   09-custom-hash       \u2605\u2605\u2605\u2606\u2606        solved   0.3s"
+],
+[
+4.439,
+"10   10-ptrace            \u2605\u2605\u2605\u2606\u2606        solved   0.4s"
+],
+[
+5.96,
+"11   11-timing            \u2605\u2605\u2605\u2606\u2606        solved   1.5s"
+],
+[
+6.515,
+"12   12-int3-scan         \u2605\u2605\u2605\u2606\u2606        solved   0.5s"
+],
+[
+6.855,
+"13   13-env-checks        \u2605\u2605\u2605\u2606\u2606        solved   0.3s"
+],
+[
+6.926,
+"14   14-smc-xor           \u2605\u2605\u2605\u2606\u2606        solved   0.0s"
+],
+[
+7.026,
+"15   15-smc-layers        \u2605\u2605\u2605\u2605\u2606        solved   0.1s"
+],
+[
+7.49,
+"16   16-cff-manual        \u2605\u2605\u2605\u2605\u2606        solved   0.4s"
+],
+[
+7.919,
+"17   17-opaque            \u2605\u2605\u2605\u2605\u2606        solved   0.4s"
+],
+[
+7.975,
+"18   18-vm-intro          \u2605\u2605\u2605\u2605\u2606        solved   0.0s"
+],
+[
+8.072,
+"19   19-vm-check          \u2605\u2605\u2605\u2605\u2606        solved   0.1s"
+],
+[
+8.169,
+"20   20-vm-obf            \u2605\u2605\u2605\u2605\u2606+       solved   0.1s"
+],
+[
+8.235,
+"21   21-packed            \u2605\u2605\u2605\u2605\u2606        solved   0.0s"
+],
+[
+8.708,
+"22   22-antidebug-mix     \u2605\u2605\u2605\u2605\u2606        solved   0.4s"
+],
+[
+9.182,
+"23   23-riscv             \u2605\u2605\u2605\u2606\u2606        solved   0.4s"
+],
+[
+9.284,
+"24   24-aarch64           \u2605\u2605\u2605\u2606\u2606        solved   0.1s"
+],
+[
+9.371,
+"25   25-constraints       \u2605\u2605\u2605\u2606\u2606        solved   0.1s"
+],
+[
+9.436,
+"26   26-signals           \u2605\u2605\u2605\u2605\u2606        solved   0.0s"
+],
+[
+9.518,
+"27   27-cpp-vtables       \u2605\u2605\u2605\u2606\u2606        solved   0.1s"
+],
+[
+10.534,
+"28   28-boss              \u2605\u2605\u2605\u2605\u2605        solved   1.0s"
+],
+[
+10.534,
+"28/28 solved"
+]
+]
+}

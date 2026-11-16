@@ -1,0 +1,26 @@
+[
+ {
+  "ch": "01-plain-strcmp",
+  "input": "password123\n",
+  "out": "Password: Wrong.\n",
+  "rc": 1
+ },
+ {
+  "ch": "03-xor-single",
+  "input": "letmein\n",
+  "out": "Password: Wrong.\n",
+  "rc": 1
+ },
+ {
+  "ch": "08-keygen-name",
+  "input": "alice\n1234-5678\n",
+  "out": "Name: Serial: Wrong.\n",
+  "rc": 1
+ },
+ {
+  "ch": "28-boss",
+  "input": "hunter2\n",
+  "out": "Key: Wrong.\n",
+  "rc": 1
+ }
+]

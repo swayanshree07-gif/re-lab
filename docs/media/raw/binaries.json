@@ -1,0 +1,142 @@
+[
+ {
+  "name": "01-plain-strcmp",
+  "size": 16400,
+  "file": "ELF 64-bit LSB pie executable, x86-64, version 1 (SYSV), dynamically linked, interpreter /lib64/ld-linux-x86-64.so.2, BuildID[sha1]=47dfb21e67a6195db4831437682a0140b141dab3, for GNU/Linux 3.2.0, not stripped"
+ },
+ {
+  "name": "02-stack-strings",
+  "size": 16352,
+  "file": "ELF 64-bit LSB pie executable, x86-64, version 1 (SYSV), dynamically linked, interpreter /lib64/ld-linux-x86-64.so.2, BuildID[sha1]=7fa97444f97e0d0d081c02515ff59adbac2b44b7, for GNU/Linux 3.2.0, not stripped"
+ },
+ {
+  "name": "03-xor-single",
+  "size": 16504,
+  "file": "ELF 64-bit LSB pie executable, x86-64, version 1 (SYSV), dynamically linked, interpreter /lib64/ld-linux-x86-64.so.2, BuildID[sha1]=f9e6534c69d61c8797dbd127351e18511d3f4b4c, for GNU/Linux 3.2.0, not stripped"
+ },
+ {
+  "name": "04-xor-rolling",
+  "size": 16416,
+  "file": "ELF 64-bit LSB pie executable, x86-64, version 1 (SYSV), dynamically linked, interpreter /lib64/ld-linux-x86-64.so.2, BuildID[sha1]=14465be6aefb7e923871d2618081e379787e1844, for GNU/Linux 3.2.0, not stripped"
+ },
+ {
+  "name": "05-math-key",
+  "size": 16712,
+  "file": "ELF 64-bit LSB pie executable, x86-64, version 1 (SYSV), dynamically linked, interpreter /lib64/ld-linux-x86-64.so.2, BuildID[sha1]=600e9cd71a0d39df4f24ea5149e0dcddbe7ad279, for GNU/Linux 3.2.0, not stripped"
+ },
+ {
+  "name": "06-serial-format",
+  "size": 16488,
+  "file": "ELF 64-bit LSB pie executable, x86-64, version 1 (SYSV), dynamically linked, interpreter /lib64/ld-linux-x86-64.so.2, BuildID[sha1]=bc87aa5e170997c9b9bb3b4c50abfc5782fda7ac, for GNU/Linux 3.2.0, not stripped"
+ },
+ {
+  "name": "07-stripped",
+  "size": 14488,
+  "file": "ELF 64-bit LSB pie executable, x86-64, version 1 (SYSV), dynamically linked, interpreter /lib64/ld-linux-x86-64.so.2, BuildID[sha1]=58c2353c227c3348920f92f379737f0c6f419603, for GNU/Linux 3.2.0, stripped"
+ },
+ {
+  "name": "08-keygen-name",
+  "size": 16416,
+  "file": "ELF 64-bit LSB pie executable, x86-64, version 1 (SYSV), dynamically linked, interpreter /lib64/ld-linux-x86-64.so.2, BuildID[sha1]=c86865268a6d237e680f0f8cf6591537f7eae2a4, for GNU/Linux 3.2.0, not stripped"
+ },
+ {
+  "name": "09-custom-hash",
+  "size": 16408,
+  "file": "ELF 64-bit LSB pie executable, x86-64, version 1 (SYSV), dynamically linked, interpreter /lib64/ld-linux-x86-64.so.2, BuildID[sha1]=b6fa4655f319ddb67545999fe9cb364dc51ab14f, for GNU/Linux 3.2.0, not stripped"
+ },
+ {
+  "name": "10-ptrace",
+  "size": 16512,
+  "file": "ELF 64-bit LSB pie executable, x86-64, version 1 (SYSV), dynamically linked, interpreter /lib64/ld-linux-x86-64.so.2, BuildID[sha1]=147b38f6a83a081dd314eb71debfae792e52d8f3, for GNU/Linux 3.2.0, not stripped"
+ },
+ {
+  "name": "11-timing",
+  "size": 16536,
+  "file": "ELF 64-bit LSB pie executable, x86-64, version 1 (SYSV), dynamically linked, interpreter /lib64/ld-linux-x86-64.so.2, BuildID[sha1]=de0ee5c54e0b54dcdd4436166beeaad91750a8a9, for GNU/Linux 3.2.0, not stripped"
+ },
+ {
+  "name": "12-int3-scan",
+  "size": 16696,
+  "file": "ELF 64-bit LSB pie executable, x86-64, version 1 (SYSV), dynamically linked, interpreter /lib64/ld-linux-x86-64.so.2, BuildID[sha1]=442478660a698ee66bc3854d56c520f0b00416ea, for GNU/Linux 3.2.0, not stripped"
+ },
+ {
+  "name": "13-env-checks",
+  "size": 17144,
+  "file": "ELF 64-bit LSB pie executable, x86-64, version 1 (SYSV), dynamically linked, interpreter /lib64/ld-linux-x86-64.so.2, BuildID[sha1]=df78f6a83d8131910a14cae4374636f4e747f6dc, for GNU/Linux 3.2.0, not stripped"
+ },
+ {
+  "name": "14-smc-xor",
+  "size": 16616,
+  "file": "ELF 64-bit LSB pie executable, x86-64, version 1 (SYSV), dynamically linked, interpreter /lib64/ld-linux-x86-64.so.2, BuildID[sha1]=30d3233ac8a92347ed6d174e837beeebe7a16c03, for GNU/Linux 3.2.0, not stripped"
+ },
+ {
+  "name": "15-smc-layers",
+  "size": 16848,
+  "file": "ELF 64-bit LSB pie executable, x86-64, version 1 (SYSV), dynamically linked, interpreter /lib64/ld-linux-x86-64.so.2, BuildID[sha1]=fe2ab421ae254ee8314f652392bded33b34b2987, for GNU/Linux 3.2.0, not stripped"
+ },
+ {
+  "name": "16-cff-manual",
+  "size": 16432,
+  "file": "ELF 64-bit LSB pie executable, x86-64, version 1 (SYSV), dynamically linked, interpreter /lib64/ld-linux-x86-64.so.2, BuildID[sha1]=b5f87171abfd67836719f3c489ca70d289165124, for GNU/Linux 3.2.0, not stripped"
+ },
+ {
+  "name": "17-opaque",
+  "size": 16720,
+  "file": "ELF 64-bit LSB pie executable, x86-64, version 1 (SYSV), dynamically linked, interpreter /lib64/ld-linux-x86-64.so.2, BuildID[sha1]=7e983921dddeb929723cb1b3b324e352b15c6516, for GNU/Linux 3.2.0, not stripped"
+ },
+ {
+  "name": "18-vm-intro",
+  "size": 16520,
+  "file": "ELF 64-bit LSB pie executable, x86-64, version 1 (SYSV), dynamically linked, interpreter /lib64/ld-linux-x86-64.so.2, BuildID[sha1]=431e47d83e6b2e07f27d805f89b276aaa4cb645e, for GNU/Linux 3.2.0, not stripped"
+ },
+ {
+  "name": "19-vm-check",
+  "size": 16408,
+  "file": "ELF 64-bit LSB pie executable, x86-64, version 1 (SYSV), dynamically linked, interpreter /lib64/ld-linux-x86-64.so.2, BuildID[sha1]=2d4a73537928ce6aa33140929fd65f59f7f044e2, for GNU/Linux 3.2.0, not stripped"
+ },
+ {
+  "name": "20-vm-obf",
+  "size": 16496,
+  "file": "ELF 64-bit LSB pie executable, x86-64, version 1 (SYSV), dynamically linked, interpreter /lib64/ld-linux-x86-64.so.2, BuildID[sha1]=8aeff0e032f02bc8b2c170caa5d64eb23d9c54e4, for GNU/Linux 3.2.0, not stripped"
+ },
+ {
+  "name": "21-packed",
+  "size": 16504,
+  "file": "ELF 64-bit LSB pie executable, x86-64, version 1 (SYSV), dynamically linked, interpreter /lib64/ld-linux-x86-64.so.2, BuildID[sha1]=f79cfce2a672a60211e26acb0ace577ff30ddb77, for GNU/Linux 3.2.0, not stripped"
+ },
+ {
+  "name": "22-antidebug-mix",
+  "size": 16952,
+  "file": "ELF 64-bit LSB pie executable, x86-64, version 1 (SYSV), dynamically linked, interpreter /lib64/ld-linux-x86-64.so.2, BuildID[sha1]=a013cb5e68726c18b73e1a4a4a389439bf047e6f, for GNU/Linux 3.2.0, not stripped"
+ },
+ {
+  "name": "23-riscv",
+  "size": 2304,
+  "file": "ELF 64-bit LSB executable, UCB RISC-V, soft-float ABI, version 1 (SYSV), statically linked, not stripped"
+ },
+ {
+  "name": "24-aarch64",
+  "size": 2104,
+  "file": "ELF 64-bit LSB executable, ARM aarch64, version 1 (SYSV), statically linked, not stripped"
+ },
+ {
+  "name": "25-constraints",
+  "size": 16376,
+  "file": "ELF 64-bit LSB pie executable, x86-64, version 1 (SYSV), dynamically linked, interpreter /lib64/ld-linux-x86-64.so.2, BuildID[sha1]=4c67b12438fdc5300108550b6f3bf508d92d4595, for GNU/Linux 3.2.0, not stripped"
+ },
+ {
+  "name": "26-signals",
+  "size": 16856,
+  "file": "ELF 64-bit LSB pie executable, x86-64, version 1 (SYSV), dynamically linked, interpreter /lib64/ld-linux-x86-64.so.2, BuildID[sha1]=a02e16b13dbfc777589acaf3fd751748d9f330da, for GNU/Linux 3.2.0, not stripped"
+ },
+ {
+  "name": "27-cpp-vtables",
+  "size": 18824,
+  "file": "ELF 64-bit LSB pie executable, x86-64, version 1 (SYSV), dynamically linked, interpreter /lib64/ld-linux-x86-64.so.2, BuildID[sha1]=694ca308574a7ba2ae522bc2cdbd788299bc52e0, for GNU/Linux 3.2.0, not stripped"
+ },
+ {
+  "name": "28-boss",
+  "size": 14472,
+  "file": "ELF 64-bit LSB pie executable, x86-64, version 1 (SYSV), dynamically linked, interpreter /lib64/ld-linux-x86-64.so.2, BuildID[sha1]=ac28736541555955295563e6b92d3f88c504c00f, for GNU/Linux 3.2.0, stripped"
+ }
+]
